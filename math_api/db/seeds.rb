@@ -45,59 +45,39 @@ puts "Re-creating Questions ..."
 
 Question.destroy_all
 
-Question.create!({
+10.times do |index|
+  Question.create!({
   category_id: 2,
-  qtext:  'Men\'s Classy shirt',
-  ans1: Faker::Hipster.paragraph(4),
+  qtext:  'What is 3 squared?',
+  ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
-  ans3: 'whatever',
-  ans4: 'leafs'
+  ans3: Faker::Name.unique.name,
+  ans4: Faker::Name.unique.name
 })
+end
 
-Question.create!({
-  category_id: 2,
-  qtext:  'Women\'s Zebra pants',
-  ans1: Faker::Hipster.paragraph(4),
+10.times do |index|
+  Question.create!({
+  category_id: 3,
+  qtext:  'What is 3 divided by 9?',
+  ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
-  ans3: 'famous',
-  ans4: 'bruins'
+  ans3: Faker::Name.unique.name,
+  ans4: Faker::Name.unique.name
 })
+end
 
-Question.create!({
-  category_id: 2,
-  qtext:  'Hipster Hat',
-  ans1: Faker::Hipster.paragraph(4),
+10.times do |index|
+  Question.create!({
+  category_id: 4,
+  qtext:  'Plot a line that goes through (0,0).',
+  ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
-  ans3: 'interesting',
-  ans4: 'sabres'
+  ans3: Faker::Name.unique.name,
+  ans4: Faker::Name.unique.name
 })
-
-Question.create!({
-  category_id: 1,
-  qtext:  'Hipster Socks',
-  ans1: Faker::Hipster.paragraph(4),
-  ans2: Faker::Name.unique.name,
-  ans3: 'normal',
-  ans4: 'devils'
-})
-
-Question.create!({
-  category_id: 1,
-  qtext:  'Russian Spy Shoes',
-  ans1: Faker::Hipster.paragraph(4),
-  ans2: Faker::Name.unique.name,
-  ans3: 'abc123',
-  ans4: 'canucks'
-})
-
-Question.create!({
-  category_id: 1,
-  qtext:  'Human Feet Shoes',
-  ans1: Faker::Hipster.paragraph(4),
-  ans2: Faker::Name.unique.name,
-  ans3: 'abc',
-  ans4: 'canadiens'
-})
+end
+p "Created #{Question.count} questions"
 
 
 
@@ -106,11 +86,10 @@ Student.destroy_all
 
 puts "Re-creating Students ..."
 
-stud1 = Student.create(email: "Billy")
-stud2 = Student.create(email: "Cindy")
-stud3 = Student.create(email: "Davey")
-stud4 = Student.create(email: "Carol")
-
+20.times do |index|
+  Student.create(email: Faker::Name.unique.name)
+end
+p "Created #{Student.count} students"
 
 ## Teachers
 Teacher.destroy_all
