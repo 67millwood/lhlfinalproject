@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   conponentDidMount() {
-    const websocket = ActionCable.createConsumer("ws://localhost:3000/websocket")
+    const websocket = ActionCable.createConsumer("ws://localhost:3006/websocket")
     window.socket = websocket.subscriptions.create({
       channel: 'WebNotificationsChannel'
     },
