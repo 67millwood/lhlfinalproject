@@ -86,8 +86,8 @@ Student.destroy_all
 
 puts "Re-creating Students ..."
 
-20.times do |index|
-  Student.create(email: Faker::Name.unique.name)
+25.times do |index|
+  Student.create(email: Faker::Internet.unique.email)
 end
 p "Created #{Student.count} students"
 
