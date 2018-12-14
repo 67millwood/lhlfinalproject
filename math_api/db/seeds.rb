@@ -33,6 +33,8 @@ end
 
 puts "Finding or Creating Categories ..."
 
+Category.destroy_all
+
 cat1 = Category.find_or_create_by! name: 'Exponents'
 cat2 = Category.find_or_create_by! name: 'Fractions'
 cat3 = Category.find_or_create_by! name: 'Order of Operations'
@@ -43,7 +45,8 @@ puts "Re-creating Questions ..."
 
 Question.destroy_all
 
-cat1.question.create!({
+Question.create!({
+  category_id: 2,
   qtext:  'Men\'s Classy shirt',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -51,7 +54,8 @@ cat1.question.create!({
   ans4: 'leafs'
 })
 
-cat1.question.create!({
+Question.create!({
+  category_id: 2,
   qtext:  'Women\'s Zebra pants',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -59,7 +63,8 @@ cat1.question.create!({
   ans4: 'bruins'
 })
 
-cat1.question.create!({
+Question.create!({
+  category_id: 2,
   qtext:  'Hipster Hat',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -67,7 +72,8 @@ cat1.question.create!({
   ans4: 'sabres'
 })
 
-cat1.question.create!({
+Question.create!({
+  category_id: 1,
   qtext:  'Hipster Socks',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -75,7 +81,8 @@ cat1.question.create!({
   ans4: 'devils'
 })
 
-cat1.question.create!({
+Question.create!({
+  category_id: 1,
   qtext:  'Russian Spy Shoes',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -83,7 +90,8 @@ cat1.question.create!({
   ans4: 'canucks'
 })
 
-cat1.question.create!({
+Question.create!({
+  category_id: 1,
   qtext:  'Human Feet Shoes',
   ans1: Faker::Hipster.paragraph(4),
   ans2: Faker::Name.unique.name,
@@ -94,7 +102,6 @@ cat1.question.create!({
 
 
 ## Students
-## id: 5 - russion spy shoes; id: 9 - smartwatch; id: 2 - zebra pants; id: 6 - feet shoes
 Student.destroy_all
 
 puts "Re-creating Students ..."
@@ -106,7 +113,6 @@ stud4 = Student.create(email: "Carol")
 
 
 ## Teachers
-## id: 5 - russion spy shoes; id: 9 - smartwatch; id: 2 - zebra pants; id: 6 - feet shoes
 Teacher.destroy_all
 
 puts "Re-creating Teachers ..."
