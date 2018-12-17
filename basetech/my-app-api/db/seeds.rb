@@ -53,8 +53,7 @@ puts "Re-creating Questions ..."
 Question.destroy_all
 
 10.times do |index|
-  Question.create!({
-  category_id: 2,
+  cat1.questions.create!({
   qtext:  'What is 3 squared?',
   ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
@@ -64,8 +63,7 @@ Question.destroy_all
 end
 
 10.times do |index|
-  Question.create!({
-  category_id: 3,
+  cat2.questions.create!({
   qtext:  'What is 3 divided by 9?',
   ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
@@ -75,8 +73,8 @@ end
 end
 
 10.times do |index|
-  Question.create!({
-  category_id: 4,
+  cat3.questions.create!({
+  category_id: 6,
   qtext:  'Plot a line that goes through (0,0).',
   ans1: Faker::Name.unique.name,
   ans2: Faker::Name.unique.name,
@@ -85,29 +83,3 @@ end
 })
 end
 p "Created #{Question.count} questions"
-
-
-
-## Students
-Student.destroy_all
-
-puts "Re-creating Students ..."
-
-25.times do |index|
-  Student.create(email: Faker::Internet.unique.email)
-end
-p "Created #{Student.count} students"
-
-## Teachers
-Teacher.destroy_all
-
-puts "Re-creating Teachers ..."
-
-stud1 = Teacher.create(email: "MRbill")
-stud2 = Teacher.create(email: "MRpink")
-stud3 = Teacher.create(email: "MRred")
-stud4 = Teacher.create(email: "MRgreen")
-
-
-
-puts "DONE!"
