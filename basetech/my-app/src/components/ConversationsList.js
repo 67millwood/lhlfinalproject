@@ -10,6 +10,7 @@ import Cable from './Cable';
 class ConversationsList extends React.Component {
 
   state = {
+    user_id: 'Bob',
     conversations: [],
     activeConversation: null
   };
@@ -29,6 +30,31 @@ class ConversationsList extends React.Component {
     const { conversation } = response;
     this.setState({
       conversations: [...this.state.conversations, conversation]
+    });
+  };
+
+  teacherSwap = () => {
+    this.setState({user_id: 'teacher'})
+  };
+
+  mapConversations = (conversations, handleClick) => {
+    return conversations.map(conversation => {
+      if (this.state.user_id == 'teacher') {
+        return (
+          <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
+            {conversation.title}
+          </li>
+        );
+      }
+      else if (conversation.user_id) {
+        if (this.state.user_id === conversation.user_id) {
+          return (
+            <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
+              {conversation.title}
+            </li>
+          );
+        }
+      }
     });
   };
 
@@ -57,8 +83,9 @@ class ConversationsList extends React.Component {
           />
         ) : null}
         <h2>Conversations</h2>
-        <ul>{mapConversations(conversations, this.handleClick)}</ul>
-        <NewConversationForm />
+        <button onClick={this.teacherSwap}> The teacher button! </button>
+        <ul>{this.mapConversations(conversations, this.handleClick)}</ul>
+        <NewConversationForm user_id={this.state.user_id}/>
         {activeConversation ? (
           <MessagesArea
             conversation={findActiveConversation(
@@ -81,13 +108,3 @@ const findActiveConversation = (conversations, activeConversation) => {
     conversation => conversation.id === activeConversation
   );
 };
-
-const mapConversations = (conversations, handleClick) => {
-  return conversations.map(conversation => {
-    return (
-      <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
-        {conversation.title}
-        </li>
-        );
-      });
-    };

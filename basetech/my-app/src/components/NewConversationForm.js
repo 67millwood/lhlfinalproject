@@ -3,7 +3,8 @@ import { API_ROOT, HEADERS } from '../constants';
 
 class NewConversationForm extends React.Component {
   state = {
-    title: ''
+    title: '',
+    user_id: this.props.user_id
   };
 
   handleChange = e => {
